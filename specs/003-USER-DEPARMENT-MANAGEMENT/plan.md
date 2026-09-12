@@ -5,6 +5,8 @@
 ## Descripcion
 Plan tecnico para implementar el CRUD de asociaciones entre usuarios y departamentos sobre la aplicacion `empresa`.
 
+Esta feature depende de las tablas `users` y `departments` definidas por las specs 001 y 002. No modifica sus CRUD base mientras se desarrolla de forma aislada, pero al integrarse debera añadir el tratamiento de `409 Conflict` en las operaciones de borrado de usuario y departamento cuando existan filas en `user_departments`.
+
 ## Stack tecnologico
 - Java OpenJDK 25.
 - Quarkus `3.39.3`.
@@ -60,6 +62,7 @@ La respuesta contendra `id`, `userId`, `departmentId` y `fechaCreacion`. Las pet
 - `fechaCreacion` se asignara con `LocalDate.now()` dentro del servicio al crear.
 - Las operaciones de escritura seran transaccionales.
 - El borrado fisico de usuarios o departamentos referenciados producira `409 Conflict` mediante el manejo global de integridad referencial.
+- La relacion sera opcional desde el punto de vista del usuario y del departamento: una entidad puede existir sin filas en `user_departments`.
 
 ## Persistencia y configuracion
 Hibernate ORM utilizara la estrategia comun `update`, configurable mediante `DB_SCHEMA_GENERATION`, para crear `user_departments` y sus claves ajenas cuando no existan. Las pruebas usaran H2 con el mismo modelo relacional.

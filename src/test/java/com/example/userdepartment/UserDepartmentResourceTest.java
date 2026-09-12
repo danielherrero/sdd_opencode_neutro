@@ -77,7 +77,7 @@ class UserDepartmentResourceTest {
     @Test @DisplayName("RF-005 lista asociaciones")
     void shouldListAssociations() { createAssociation(0, 0); createAssociation(0, 1); given().when().get("/user-departments").then().statusCode(200).body("$", hasSize(2)); }
 
-    @Test @DisplayName("RF-005A permite cero, una o multiples asociaciones por usuario")
+    @Test @DisplayName("RF-010 permite cero, una o multiples asociaciones por usuario")
     void shouldAllowZeroOneOrManyDepartmentsPerUser() {
         createAssociation(0, 0); createAssociation(0, 1); createAssociation(0, 2);
         given().when().get("/user-departments").then().statusCode(200).body("$", hasSize(3)).body("userId", everyItem(equalTo(userIds[0].intValue())));

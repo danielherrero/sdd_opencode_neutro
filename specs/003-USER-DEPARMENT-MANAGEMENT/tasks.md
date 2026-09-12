@@ -36,6 +36,7 @@ La implementacion seguira TDD. Cada prueba identificara el requisito `RF-` evalu
 - [x] T324 Mapear conflictos de integridad a `409 Conflict`.
 - [x] T325 Reutilizar el formato global de errores.
 - [x] T325A Crear utilidad de preparacion que vacie asociaciones, usuarios y departamentos y cree cinco usuarios y cinco departamentos aleatorios.
+- [ ] T325B Documentar la integracion posterior del conflicto `409` en los servicios de borrado de las specs 001 y 002.
 
 ## 4. Tests RF-001 a RF-009
 - [x] T326 Test `RF-001` de alta valida, ID generado y fecha automatica.
@@ -49,7 +50,7 @@ La implementacion seguira TDD. Cada prueba identificara el requisito `RF-` evalu
 - [x] T334 Test `RF-007` de fecha automatica e inmutabilidad.
 - [x] T335 Test `RF-008` de conflictos al eliminar usuario o departamento referenciado.
 - [x] T336 Test `RF-009` de trazabilidad HTTP completa con cabeceras y payloads.
-- [x] T336A Test `RF-005A` que verifique un usuario sin departamentos, con uno y con multiples departamentos.
+- [x] T336A Test `RF-010` que verifique un usuario sin departamentos, con uno y con multiples departamentos.
 
 ## 5. Verificacion
 - [x] T337 Ejecutar todos los tests.
