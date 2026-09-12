@@ -30,3 +30,6 @@ openclaude_gemma/
 
 ```
 El agente empezara leyendo el archivo docs/consitution.md y luego todas las specs
+
+## Documentacion de terceros
+Cuando necesites documentacion actualizada de frameworks o librerias usa el mcp context7

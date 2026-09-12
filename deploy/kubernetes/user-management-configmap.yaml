@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: user-management-config
+  namespace: sdd
+data:
+  QUARKUS_PROFILE: kubernetes
+  DB_JDBC_URL: jdbc:postgresql://postgresql:5432/sdd
+  DB_USERNAME: admin

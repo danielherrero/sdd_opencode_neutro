@@ -9,3 +9,8 @@ target/
 # Java runtime files
 hs_err_pid*.log
 replay_pid*.log
+
+# Local configuration and credentials
+.env
+.env.*
+!.env.example

@@ -13,7 +13,9 @@ En este archivo se especifican las reglas de obligado cumplimiento para todo el 
 * ** Idioma **: Todos los mensajes al usuario se darán en castellano
 * ** El agente puede consultar en internet todo lo que considere necesario
 * ** Cualquier cambio en código debe quedar reflejado en su spec
+* ** Sincronizacion de requisitos y pruebas **: Siempre que se modifique un requisito funcional en `spec.md`, se actualizaran en consecuencia `plan.md` y `tasks.md`, y se crearan o actualizaran los casos de prueba necesarios antes de dar el cambio por terminado.
 * ** Cada spec debe identificar los requisitos funcionales, que se definen como RF-<número secuencia>-breve descripción
+* ** Formato EARS para requisitos **: Los requisitos funcionales de todas las specs deben redactarse utilizando el formato EARS (Easy Approach to Requirements Syntax)
 * ** Arquitectura por Capas **: El backend debe seguir una estructura clara de capas (Controller, Service, Repository, DTO, Entity) para asegurar la separación de responsabilidades.
 * ** Manejo de Excepciones Global **: Todas las excepciones deben ser capturadas de forma centralizada para devolver respuestas REST consistentes.
 * ** Validación de Datos **: Es obligatorio validar los datos a nivel de DTO antes de que lleguen a la lógica de negocio.

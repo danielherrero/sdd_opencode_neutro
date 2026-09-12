@@ -18,5 +18,5 @@ COPY --from=build /workspace/target/quarkus-app/quarkus/ ./quarkus/
 RUN useradd --system --create-home --uid 10001 quarkus
 USER 10001
 
-EXPOSE 8080
+EXPOSE 8081
 ENTRYPOINT ["java", "-jar", "quarkus-run.jar"]

@@ -60,8 +60,20 @@ public class User {
     }
 
     public void update(String nombre, String apellidos, LocalDate fechaNacimiento) {
-        this.nombre = nombre;
-        this.apellidos = apellidos;
-        this.fechaNacimiento = fechaNacimiento;
+        if (nombre != null) {
+            this.nombre = nombre;
+        }
+        if (apellidos != null) {
+            this.apellidos = apellidos;
+        }
+        if (fechaNacimiento != null) {
+            this.fechaNacimiento = fechaNacimiento;
+        }
+    }
+
+    public void updateContrasena(String contrasena) {
+        if (contrasena != null) {
+            this.contrasena = contrasena;
+        }
     }
 }

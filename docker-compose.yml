@@ -5,7 +5,7 @@ services:
     environment:
       POSTGRES_DB: sdd
       POSTGRES_USER: admin
-      POSTGRES_PASSWORD: DanielHerrero1974@
+      POSTGRES_PASSWORD: ${DB_PASSWORD:?DB_PASSWORD debe estar definido}
     ports:
       - "${POSTGRES_PORT:-5432}:5432"
     volumes:
@@ -17,6 +17,7 @@ services:
       retries: 10
 
   app:
+    image: user-management:latest
     build:
       context: .
       dockerfile: Dockerfile
@@ -25,9 +26,9 @@ services:
       QUARKUS_PROFILE: docker
       DB_JDBC_URL: jdbc:postgresql://postgres:5432/sdd
       DB_USERNAME: admin
-      DB_PASSWORD: DanielHerrero1974@
+      DB_PASSWORD: ${DB_PASSWORD:?DB_PASSWORD debe estar definido}
     ports:
-      - "${HTTP_PORT:-8080}:8080"
+      - "${HTTP_PORT:-8081}:8081"
     depends_on:
       postgres:
         condition: service_healthy

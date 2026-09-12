@@ -1,7 +1,10 @@
 {
   "$schema": "https://opencode.ai/config.json",
   "permission": {
-    "bash": "allow"
+    "bash": "allow",
+    "git *": "allow",
+    "powershell": "allow",
+    "node": "allow"
   },
   "mcp": {
     "gitlab": {
@@ -16,6 +19,34 @@
       "headers": {
         "Authorization": "Bearer {env:GITHUB_PERSONAL_ACCESS_TOKEN}"
       }
+    },
+    "context7": {
+      "type": "remote",
+      "url": "https://mcp.context7.com/mcp",
+      "headers": {
+        "Authorization": "Bearer {env:CONTEXT7_API_KEY}"
+      },
+      "enabled": true
+    },
+    "postgres-docker": {
+      "type": "local",
+      "enabled": true,
+      "command": [
+        "npx",
+        "-y",
+        "@modelcontextprotocol/server-postgres",
+        "{env:POSTGRES_MCP_URL}"
+      ]
+    },
+    "postgres-kubernetes": {
+      "type": "local",
+      "enabled": true,
+      "command": [
+        "pwsh",
+        "-NoProfile",
+        "-File",
+        "scripts/mcp-postgres-kubernetes.ps1"
+      ]
     }
   }
 }
