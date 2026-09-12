@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: user-management-config
+  name: empresa-config
   namespace: sdd
 data:
   QUARKUS_PROFILE: kubernetes

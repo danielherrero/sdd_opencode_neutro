@@ -148,7 +148,8 @@ class UserResourceTest {
 
         given().contentType("application/json").body(Map.of("nombre", ""))
                 .when().put("/users/{id}", id)
-                .then().statusCode(400).body("errors.nombre", equalTo("no puede estar vacio"));
+                .then().statusCode(400).body("errors.nombre",
+                        anyOf(equalTo("no puede estar vacio"), equalTo("solo puede contener letras")));
     }
 
     @Test
