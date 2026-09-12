@@ -9,6 +9,7 @@ En este archivo se especifican las reglas de obligado cumplimiento para todo el 
 * ** Cada feature se desarrolla en su propia rama GIT**: Cada feature exige ser desarrollada en su propia rama GIT
 * ** No inventar nada **: El agente no debe inventar nada. Cada duda que tenga se lo preguntará al usuario
 * ** Basado en tests (TDD) **: La primera tarea de cada especificación será generar casos de tests, tanto happy cases como unhappy cases, así como casos límite. Si un test no se pasa, no se continúa con el siguiente
+* ** Trazabilidad y cobertura de requisitos **: Cada test debe indicar explícitamente qué requisito funcional `RF-` evalúa, y todo requisito funcional debe estar probado por al menos un caso de prueba
 * ** Idioma **: Todos los mensajes al usuario se darán en castellano
 * ** El agente puede consultar en internet todo lo que considere necesario
 * ** Cualquier cambio en código debe quedar reflejado en su spec
