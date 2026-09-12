@@ -221,9 +221,9 @@ Los tests se crearan antes de la implementacion. El nombre, `@DisplayName` o doc
 - [x] T110 Configurar el perfil `docker` en la aplicacion.
 - [x] T111 Exponer el puerto HTTP de la aplicacion.
 - [x] T112 Verificar que la aplicacion espera a que PostgreSQL este disponible.
-- [ ] T113 Ejecutar la aplicacion y PostgreSQL con Docker Compose.
-- [ ] T114 Verificar que la API persiste y consulta usuarios en PostgreSQL dentro de Docker.
-- [ ] T115 Verificar que no existen secretos dentro de la imagen Docker.
+- [x] T113 Ejecutar la aplicacion y PostgreSQL con Docker Compose.
+- [x] T114 Verificar que la API persiste y consulta usuarios en PostgreSQL dentro de Docker.
+- [x] T115 Verificar que no existen secretos dentro de la imagen Docker.
 
 ## 11. PostgreSQL en Kubernetes
 
