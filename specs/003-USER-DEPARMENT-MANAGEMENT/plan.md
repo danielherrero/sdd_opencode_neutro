@@ -37,6 +37,8 @@ La entidad `UserDepartment` se mapeara a `user_departments` con:
 
 Las relaciones se validaran antes de persistir y tambien quedaran protegidas por claves ajenas en la base de datos. No se expondra la entidad directamente.
 
+La cardinalidad sera `User 0..N <-> Department 0..N`, implementada mediante la tabla intermedia `user_departments`. No se añadira una coleccion obligatoria en `User` ni en `Department`; la ausencia de filas en la tabla intermedia representa cero asociaciones.
+
 ## Contrato REST
 El recurso base sera `/user-departments`.
 
@@ -52,6 +54,7 @@ La respuesta contendra `id`, `userId`, `departmentId` y `fechaCreacion`. Las pet
 
 ## Reglas de negocio
 - En el alta, `userId` y `departmentId` seran obligatorios.
+- Un usuario podra tener cero, una o multiples asociaciones con departamentos. Las pruebas prepararan cinco usuarios y cinco departamentos y verificaran que un mismo usuario puede asociarse a varios departamentos.
 - En la modificacion, ambos campos seran opcionales de forma individual; si se incluyen, deberan referenciar entidades existentes.
 - Una peticion de modificacion no podra cambiar `fechaCreacion`.
 - `fechaCreacion` se asignara con `LocalDate.now()` dentro del servicio al crear.
@@ -65,6 +68,7 @@ Hibernate ORM utilizara la estrategia comun `update`, configurable mediante `DB_
 Las pruebas se ejecutaran con H2 en memoria y cada `DisplayName` incluira el requisito `RF-`. `UserDepartmentResourceTest` configurara filtros globales `RequestLoggingFilter` y `ResponseLoggingFilter` de RestAssured para imprimir metodo, URI, cabeceras, estado y payload de todas las peticiones y respuestas.
 
 Se probaran:
+- Limpieza inicial de asociaciones, usuarios y departamentos, seguida de la creacion de cinco usuarios y cinco departamentos aleatorios.
 - Alta con IDs validos y persistencia.
 - Alta con usuario o departamento inexistente.
 - Consulta, listado y eliminacion.
@@ -72,6 +76,7 @@ Se probaran:
 - Inmutabilidad de fecha de creacion.
 - Conflictos de integridad al eliminar entidades referenciadas.
 - Ausencia de fecha proporcionada por el cliente.
+- Cardinalidad `0..N`: usuario sin asociaciones, con una asociacion y con multiples departamentos.
 
 ## Criterios de implementacion
 - La tabla y claves ajenas se crean automaticamente si no existen.
