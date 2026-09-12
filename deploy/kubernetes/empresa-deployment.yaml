@@ -1,27 +1,27 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: user-management
+  name: empresa
   namespace: sdd
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: user-management
+      app: empresa
   template:
     metadata:
       labels:
-        app: user-management
+        app: empresa
     spec:
       containers:
-        - name: user-management
-          image: user-management:latest
+        - name: empresa
+          image: empresa:latest
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8081
           envFrom:
             - configMapRef:
-                name: user-management-config
+                name: empresa-config
           env:
             - name: DB_PASSWORD
               valueFrom:

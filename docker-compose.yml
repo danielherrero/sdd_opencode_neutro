@@ -17,11 +17,11 @@ services:
       retries: 10
 
   app:
-    image: user-management:latest
+    image: empresa:latest
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: sdd-user-management
+    container_name: sdd-empresa
     environment:
       QUARKUS_PROFILE: docker
       DB_JDBC_URL: jdbc:postgresql://postgres:5432/sdd
