@@ -256,3 +256,4 @@ Los tests se crearan antes de la implementacion. El nombre, `@DisplayName` o doc
 - [x] T144 Verificar el despliegue de PostgreSQL y la aplicacion mediante Kubernetes.
 - [x] T145 Actualizar `spec.md` si se produce cualquier cambio funcional.
 - [x] T146 Documentar cualquier decision tecnica adicional.
+- [x] T179 Renombrar los recursos de despliegue de la aplicacion a `empresa` para representar el backend completo.

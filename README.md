@@ -17,4 +17,3 @@ Vamos a crear la spec 003-USER-DEPARMENT-MANAGEMENT en su correspondiente rama. 
 
 #### WEB angular SPA
 Se quiere crear una web SPA con la ultima version de angular. Dispondra de un menu lateral izquierdo para gestionar usuarios, departamentos y relaciones entre usuarios y departamentos. De este modo en la seccion de usuarios permitira hacer el alta de un usuario, modificacion, detalle de usuario, listar todos, etc. De la misma forma en la seccion de departamentos permitira hacer todas las opciones. De igual forma en la seccion de relaciones permitira realizar su gestion. En este caso, en vez de insertar manualmente los ID de usuario e ID de departamento se mostrara un combo con los usuarios y departamentos disponibles. Crea la spec, plan y tasks
-
