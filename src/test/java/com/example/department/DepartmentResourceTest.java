@@ -21,6 +21,7 @@ import io.restassured.RestAssured;
 import io.restassured.filter.log.RequestLoggingFilter;
 import io.restassured.filter.log.ResponseLoggingFilter;
 import jakarta.inject.Inject;
+import jakarta.persistence.EntityManager;
 import jakarta.transaction.Transactional;
 
 @QuarkusTest
@@ -38,6 +39,9 @@ class DepartmentResourceTest {
 
     @Inject
     DepartmentRepository repository;
+
+    @Inject
+    EntityManager entityManager;
 
     private static final Map<String, Object> VALID_DEPARTMENT = Map.of(
             "nombre", "Finanzas",
@@ -102,6 +106,23 @@ class DepartmentResourceTest {
                 .then().statusCode(204);
         given().when().delete("/departments/{id}", id)
                 .then().statusCode(404);
+    }
+
+    @Test
+    @DisplayName("RF-004 devuelve 409 al eliminar un departamento referenciado")
+    void shouldRejectDeleteOfReferencedDepartment() {
+        int departmentId = createDepartment();
+        int userId = given().contentType("application/json").body(Map.of(
+                "nombre", "Usuario", "apellidos", "Prueba",
+                "fechaNacimiento", "1980-01-01", "contrasena", "secret-password"))
+                .when().post("/users").then().statusCode(201).extract().path("id");
+        given().contentType("application/json").body(Map.of(
+                "userId", userId, "departmentId", departmentId))
+                .when().post("/user-departments").then().statusCode(201);
+
+        given().when().delete("/departments/{id}", departmentId)
+                .then().statusCode(409).body("error",
+                        equalTo("No se puede eliminar el departamento porque esta referenciado por otros datos"));
     }
 
     @Test
@@ -178,6 +199,7 @@ class DepartmentResourceTest {
 
     @Transactional
     void deleteAllDepartments() {
+        entityManager.createQuery("delete from UserDepartment").executeUpdate();
         repository.deleteAll();
     }
 }

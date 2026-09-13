@@ -1,0 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap');
+
+:root { --ink:#101b2d; --blue:#315b80; --lime:#b8ef63; --paper:#f3f5f3; --display:'Space Grotesk', sans-serif; --body:'DM Sans', sans-serif; }
+* { box-sizing:border-box; } html,body { height:100%; margin:0; } body { background:var(--paper); color:var(--ink); font-family:var(--body); } button,a,input,textarea { font-family:inherit; } :focus-visible { outline:3px solid #7ba9d1; outline-offset:2px; }

@@ -18,6 +18,7 @@ Esta funcionalidad define una aplicacion web SPA para `empresa`, desarrollada co
 - **RF-010: Estados de Interaccion**: Cuando una operacion REST este en curso, la SPA debera indicar carga y evitar acciones duplicadas. Cuando termine, debera mostrar confirmacion o error sin perder el contexto de la vista.
 - **RF-011: Responsive y Accesibilidad**: Cuando la SPA se visualice en escritorio, tablet o movil, debera adaptar el menu lateral y el contenido manteniendo navegacion por teclado, etiquetas accesibles y contraste suficiente.
 - **RF-012: Trazabilidad HTTP en Desarrollo**: Durante las pruebas frontend, las peticiones HTTP deberan poder inspeccionarse con metodo, URI, cabeceras, payload, status y payload de respuesta sin exponer secretos reales.
+- **RF-013: Aplicacion del Skill de Diseno Frontend**: Cuando se diseñe o implemente la interfaz de la SPA, el equipo debera utilizar el skill `frontend-design` para definir y aplicar una interfaz distintiva, responsive y coherente con los requisitos de accesibilidad.
 
 ## Requisitos No Funcionales (RNF)
 - **RNF-001: Tecnologia**: La SPA utilizara la ultima version estable de Angular disponible al iniciar la implementacion.

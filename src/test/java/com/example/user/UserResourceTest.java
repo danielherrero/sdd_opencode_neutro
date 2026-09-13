@@ -347,6 +347,7 @@ class UserResourceTest {
     @Transactional
     void deleteAllUsers() {
         entityManager.createQuery("delete from UserReference").executeUpdate();
+        entityManager.createQuery("delete from UserDepartment").executeUpdate();
         entityManager.createQuery("delete from User").executeUpdate();
     }
 

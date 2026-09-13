@@ -187,6 +187,10 @@ El contrato detallara para cada operacion:
 - La eliminacion seguira la estrategia definida para la feature: fisica o logica. Si existen claves ajenas que impidan eliminar, se devolvera `409 Conflict`.
 - Las credenciales y secretos se excluiran del control de versiones.
 
+## Integridad referencial y conflicto `409`
+
+El servicio `UserService.delete` elimina el usuario y fuerza el `flush` de la transaccion para que la base de datos valide inmediatamente las claves ajenas de `user_departments` y de cualquier tabla relacionada. Una `PersistenceException` derivada de esa validacion se transforma en `IntegrityConflictException`, cuyo mapper devuelve `409 Conflict` sin exponer detalles internos de Hibernate o PostgreSQL. El recurso conserva `404 Not Found` cuando el usuario no existe.
+
 ## Manejo de errores
 
 Se implementara un manejador global de excepciones que traduzca las excepciones de validacion, recurso no encontrado, conflicto de integridad y errores inesperados al formato JSON comun de la API. No se devolveran trazas ni detalles sensibles al cliente.

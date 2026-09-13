@@ -37,7 +37,7 @@ El recurso base sera `/departments`.
 | `GET` | `/departments` | `200 OK` | - | RF-006 |
 | `GET` | `/departments/{id}` | `200 OK` | `404 Not Found` | RF-002 |
 | `PUT` | `/departments/{id}` | `200 OK` | `400 Bad Request`, `404 Not Found` | RF-003, RF-005, RF-008 |
-| `DELETE` | `/departments/{id}` | `204 No Content` | `404 Not Found` | RF-004 |
+| `DELETE` | `/departments/{id}` | `204 No Content` | `404 Not Found`, `409 Conflict` | RF-004 |
 
 La respuesta JSON sera un DTO con `id`, `nombre`, `descripcion` y `fechaCreacion`. Los errores `400` reutilizaran el formato comun `{ "error": "...", "errors": { "campo": "motivo" } }`.
 
@@ -45,6 +45,10 @@ La respuesta JSON sera un DTO con `id`, `nombre`, `descripcion` y `fechaCreacion
 `CreateDepartmentRequest` exigira `nombre` mediante `@NotBlank`. `UpdateDepartmentRequest` tendra todos sus campos opcionales y validara los que se incluyan. Los constructores compactos aplicaran `trim()` a `nombre` y `descripcion` antes de Bean Validation. No se aplicara la restriccion Unicode de usuarios: se permitiran numeros, espacios internos, signos y caracteres especiales.
 
 Si `fechaCreacion` no se recibe en alta, el servicio asignara `LocalDate.now()`. Si se recibe, se conservara la fecha enviada. En una actualizacion parcial sólo se modificaran los campos presentes.
+
+## Integridad referencial y conflicto `409`
+
+El borrado de departamentos se ejecuta dentro de una transaccion y debe respetar las claves ajenas de `user_departments`. Cuando una eliminacion de un departamento referenciado provoque una excepcion de persistencia, el servicio debe traducirla al error global de integridad para devolver `409 Conflict`; si el departamento no existe se mantiene `404 Not Found`. Esta integracion queda alineada con el contrato de la spec 003 y evita exponer detalles de la base de datos.
 
 ## Persistencia
 - Hibernate ORM generara la tabla `departments` cuando no exista. La estrategia comun sera `update`, pudiendo sobrescribirse mediante `DB_SCHEMA_GENERATION`.

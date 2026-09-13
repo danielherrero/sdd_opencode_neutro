@@ -15,3 +15,6 @@ Vamos a crear la segunda spec, que va a ser la gestion de departamentos. Un depa
 #### CRUD de la relacion usuario-empresa
 Vamos a crear la spec 003-USER-DEPARMENT-MANAGEMENT en su correspondiente rama. Igualmente se tratara de un CRUD. Se podran dar de alta asociaciones entre usuarios y departamentos y tendra su propia tabla sql. Cada registro tendra ID usuario, ID departamento y fecha de creacion, que se insertara automaticamente. No se podran dar de alta registros o modificar actuales siempre que exista el ID de usuario y el de departamento. Crea los requisitos funcionales que apliquen, asi como el plan.md y tasks.md. Pero primero hace commit y push de las otras ramas
 
+#### WEB angular SPA
+Se quiere crear una web SPA con la ultima version de angular. Dispondra de un menu lateral izquierdo para gestionar usuarios, departamentos y relaciones entre usuarios y departamentos. De este modo en la seccion de usuarios permitira hacer el alta de un usuario, modificacion, detalle de usuario, listar todos, etc. De la misma forma en la seccion de departamentos permitira hacer todas las opciones. De igual forma en la seccion de relaciones permitira realizar su gestion. En este caso, en vez de insertar manualmente los ID de usuario e ID de departamento se mostrara un combo con los usuarios y departamentos disponibles. Crea la spec, plan y tasks
+

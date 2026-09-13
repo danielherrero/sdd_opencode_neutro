@@ -66,7 +66,7 @@ La implementacion seguira TDD: primero se crearan los tests y despues el codigo 
 - [x] T158 Configurar la ejecucion de la aplicacion como pod en el cluster `docker-desktop`, dentro del namespace `sdd`.
 - [x] T159 Configurar la aplicacion en Kubernetes con el perfil `kubernetes`.
 - [x] T160 Configurar la aplicacion en Kubernetes para conectarse al Service PostgreSQL del namespace `sdd`.
-- [ ] T161 Verificar que los tres modos utilizan la base de datos PostgreSQL `sdd` y el usuario `admin`.
+- [x] T161 Verificar que los tres modos utilizan la base de datos PostgreSQL `sdd` y el usuario `admin`.
 
 ## 4. Tests de requisitos funcionales
 
@@ -82,7 +82,7 @@ Los tests se crearan antes de la implementacion. El nombre, `@DisplayName` o doc
 - [x] T030 Crear test `RF-001` para verificar la respuesta HTTP `201 Created`.
 - [x] T031 Crear test `RF-001` para comprobar que se genera automaticamente el identificador.
 - [x] T032 Crear test `RF-001` para rechazar una peticion con datos invalidos.
-- [ ] T033 Crear test `RF-001` para verificar que el usuario se persiste en PostgreSQL.
+- [x] T033 Crear test `RF-001` para verificar que el usuario se persiste en PostgreSQL.
 
 ### RF-002: Obtencion de usuario
 
@@ -143,9 +143,9 @@ Los tests se crearan antes de la implementacion. El nombre, `@DisplayName` o doc
 - [x] T014 Configurar el perfil `%kubernetes` para ejecucion en Kubernetes.
 - [x] T015 Configurar URL, usuario y contrasena del datasource mediante variables de entorno.
 - [x] T016 Configurar el modo de generacion y actualizacion del esquema de base de datos.
-- [ ] T017 Evitar credenciales y secretos en el repositorio.
+- [x] T017 Evitar credenciales y secretos en el repositorio.
 - [x] T018 Documentar las variables de entorno requeridas para cada perfil.
-- [ ] T019 Verificar la activacion de cada perfil con `-Dquarkus.profile`.
+- [x] T019 Verificar la activacion de cada perfil con `-Dquarkus.profile`.
 
 ## 6. DTOs y validacion
 
@@ -221,15 +221,15 @@ Los tests se crearan antes de la implementacion. El nombre, `@DisplayName` o doc
 - [x] T110 Configurar el perfil `docker` en la aplicacion.
 - [x] T111 Exponer el puerto HTTP de la aplicacion.
 - [x] T112 Verificar que la aplicacion espera a que PostgreSQL este disponible.
-- [ ] T113 Ejecutar la aplicacion y PostgreSQL con Docker Compose.
-- [ ] T114 Verificar que la API persiste y consulta usuarios en PostgreSQL dentro de Docker.
-- [ ] T115 Verificar que no existen secretos dentro de la imagen Docker.
+- [x] T113 Ejecutar la aplicacion y PostgreSQL con Docker Compose.
+- [x] T114 Verificar que la API persiste y consulta usuarios en PostgreSQL dentro de Docker.
+- [x] T115 Verificar que no existen secretos dentro de la imagen Docker.
 
 ## 11. PostgreSQL en Kubernetes
 
 - [x] T121 Configurar las variables de entorno de PostgreSQL mediante `Secret` y `ConfigMap`.
 - [x] T122 Configurar las probes de disponibilidad de PostgreSQL.
-- [ ] T123 Configurar la persistencia de datos tras reiniciar el pod de PostgreSQL.
+- [x] T123 Configurar la persistencia de datos tras reiniciar el pod de PostgreSQL.
 - [x] T124 Crear el `Deployment` de la aplicacion.
 - [x] T125 Crear el `Service` de la aplicacion.
 - [x] T126 Configurar el perfil `kubernetes`.
@@ -238,10 +238,10 @@ Los tests se crearan antes de la implementacion. El nombre, `@DisplayName` o doc
 - [x] T129 Configurar las probes de disponibilidad y estado de la aplicacion.
 - [x] T130 Configurar los puertos del contenedor y del servicio.
 - [x] T131 Definir recursos de CPU y memoria.
-- [ ] T132 Desplegar PostgreSQL y la aplicacion en un cluster Kubernetes local.
-- [ ] T133 Verificar la conectividad entre la aplicacion y PostgreSQL.
-- [ ] T134 Verificar que la API persiste y consulta usuarios en Kubernetes.
-- [ ] T135 Verificar la persistencia de los datos tras reiniciar los pods.
+- [x] T132 Desplegar PostgreSQL y la aplicacion en un cluster Kubernetes local.
+- [x] T133 Verificar la conectividad entre la aplicacion y PostgreSQL.
+- [x] T134 Verificar que la API persiste y consulta usuarios en Kubernetes.
+- [x] T135 Verificar la persistencia de los datos tras reiniciar los pods.
 
 ## 12. Verificacion final
 
@@ -251,8 +251,8 @@ Los tests se crearan antes de la implementacion. El nombre, `@DisplayName` o doc
 - [x] T139 Verificar que todas las RF tienen al menos un caso de prueba.
 - [x] T140 Verificar la trazabilidad entre `spec.md`, `plan.md` y los tests.
 - [x] T141 Verificar la compilacion con OpenJDK 25.
-- [ ] T142 Verificar la ejecucion local mediante los scripts.
-- [ ] T143 Verificar la ejecucion mediante Docker Compose.
-- [ ] T144 Verificar el despliegue de PostgreSQL y la aplicacion mediante Kubernetes.
+- [x] T142 Verificar la ejecucion local mediante los scripts.
+- [x] T143 Verificar la ejecucion mediante Docker Compose.
+- [x] T144 Verificar el despliegue de PostgreSQL y la aplicacion mediante Kubernetes.
 - [x] T145 Actualizar `spec.md` si se produce cualquier cambio funcional.
 - [x] T146 Documentar cualquier decision tecnica adicional.

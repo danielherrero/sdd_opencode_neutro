@@ -1,0 +1,29 @@
+# Dependencies
+node_modules/
+
+# Angular build output
+/dist/
+/out-tsc/
+.angular/
+
+# Test and coverage output
+/coverage/
+
+# Logs
+*.log
+
+# Environment files
+.env
+.env.*
+!.env.example
+
+# IDE metadata
+.idea/
+.vscode/*
+!.vscode/extensions.json
+!.vscode/launch.json
+!.vscode/tasks.json
+
+# OS metadata
+.DS_Store
+Thumbs.db

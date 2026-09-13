@@ -38,6 +38,7 @@ class UserDepartmentResourceTest {
     @Transactional
     void clearAndCreateRandomData() {
         associations.deleteAll();
+        users.getEntityManager().flush();
         users.deleteAll();
         departments.deleteAll();
         userIds = new Long[5]; departmentIds = new Long[5];

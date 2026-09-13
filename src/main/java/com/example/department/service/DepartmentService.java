@@ -8,9 +8,11 @@ import com.example.department.dto.DepartmentResponse;
 import com.example.department.dto.UpdateDepartmentRequest;
 import com.example.department.entity.Department;
 import com.example.department.exception.DepartmentNotFoundException;
+import com.example.department.exception.DepartmentIntegrityConflictException;
 import com.example.department.repository.DepartmentRepository;
 
 import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.persistence.PersistenceException;
 import jakarta.transaction.Transactional;
 
 @ApplicationScoped
@@ -47,8 +49,12 @@ public class DepartmentService {
 
     @Transactional
     public void delete(Long id) {
-        if (!repository.deleteById(id)) {
-            throw new DepartmentNotFoundException(id);
+        Department department = findEntity(id);
+        try {
+            repository.delete(department);
+            repository.getEntityManager().flush();
+        } catch (PersistenceException exception) {
+            throw new DepartmentIntegrityConflictException();
         }
     }
 
