@@ -1,8 +1,12 @@
+<#
+Usage: .\postgres-docker.ps1 -Action [start|restart|stop]
+#>
 param(
     [Parameter(Mandatory = $true)]
     [ValidateSet('start', 'restart', 'stop')]
     [string]$Action
 )
+
 
 $ErrorActionPreference = 'Stop'
 $ProjectRoot = Split-Path -Parent $PSScriptRoot

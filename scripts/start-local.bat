@@ -1,10 +1,9 @@
 @echo off
-setlocal
-
 set "PROJECT_ROOT=%~dp0.."
+cd /d "%PROJECT_ROOT%"
 
-if "%DB_PASSWORD%"=="" if exist "%PROJECT_ROOT%\.env" (
-    for /f "usebackq tokens=1,* delims==" %%A in ("%PROJECT_ROOT%\.env") do if "%%A"=="DB_PASSWORD" set "DB_PASSWORD=%%B"
+if "%DB_PASSWORD%"=="" if exist ".env" (
+    for /f "usebackq tokens=1,* delims==" %%A in (".env") do if "%%A"=="DB_PASSWORD" set "DB_PASSWORD=%%B"
 )
 
 if "%DB_PASSWORD%"=="" (
@@ -24,20 +23,21 @@ if errorlevel 1 (
     exit /b 1
 )
 
-if not exist "%PROJECT_ROOT%\frontend\node_modules" (
+if not exist "frontend\node_modules" (
     echo No se encontraron las dependencias Angular. Ejecuta "npm install" en frontend.
     exit /b 1
 )
 
-docker compose --project-directory "%PROJECT_ROOT%" up -d --wait postgres
-if errorlevel 1 exit /b %errorlevel%
+docker compose ps postgres | findstr "running" >nul
+if %errorlevel% neq 0 (
+    echo Levantando contenedor de postgresql...
+    docker compose up -d --wait postgres
+)
 
-start "Empresa SPA - Angular" /D "%PROJECT_ROOT%\frontend" cmd /c "npm start"
+start "Empresa SPA - Angular" /D "frontend" cmd /c "npm start"
 
-pushd "%PROJECT_ROOT%"
 call mvnw.cmd --batch-mode quarkus:dev -Dquarkus.profile=dev
 set "EXIT_CODE=%errorlevel%"
-popd
 
 taskkill /FI "WINDOWTITLE eq Empresa SPA - Angular" /T /F >nul 2>&1
 

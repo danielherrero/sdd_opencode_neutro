@@ -23,4 +23,4 @@ En este archivo se especifican las reglas de obligado cumplimiento para todo el 
 * ** Estándares de API REST **: Se deben utilizar correctamente los códigos de estado HTTP (200, 201, 400, 404, 500) y un formato de respuesta JSON estándar.
 * ** Contratos de API **: Cada plan.md debe definir el contrato de la API antes de implementar el backend para facilitar el desarrollo paralelo del frontend.
 * ** Desacoplamiento de Datos **: Se deben utilizar DTOs para la comunicación externa, evitando exponer directamente las entidades de la base de datos.
-* ** Calidad de Código **: Se debe mantener la consistencia en la nomenclatura y documentar las funciones críticas con Javadoc.
+* ** Calidad de Código **: Se debe mantener la consistencia en la nomenclatura y documentar las funciones críticas con Javadoc.\n* ** Entornos de ejecución **: Tanto el frontend web como el backend podrán ejecutarse de forma nativa en un host, o bien en un contenedor Docker o bien en un pod de Kubernetes.

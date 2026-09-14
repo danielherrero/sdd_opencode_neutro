@@ -5,7 +5,7 @@ Estos ejemplos suponen que Quarkus esta ejecutandose en local con el puerto `808
 Define la URL base antes de ejecutar las llamadas:
 
 ```bash
-BASE_URL=http://localhost:8081
+BASE_URL=http://localhost:9091
 ```
 
 Las variables `USER_ID`, `DEPARTMENT_ID` y `RELATION_ID` deben sustituirse por los identificadores devueltos por las operaciones de alta.

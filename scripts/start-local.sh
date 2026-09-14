@@ -1,4 +1,5 @@
 #!/usr/bin/env sh
+# Usage: ./start-local.sh
 set -eu
 
 PROJECT_ROOT=$(CDPATH= cd -- "$(dirname -- "$0")/.." && pwd)
@@ -22,7 +23,11 @@ if [ ! -d "$PROJECT_ROOT/frontend/node_modules" ]; then
   exit 1
 fi
 
-docker compose --project-directory "$PROJECT_ROOT" up -d --wait postgres
+# Verificar si el contenedor de postgres está corriendo
+if ! docker compose --project-directory "$PROJECT_ROOT" ps postgres | grep -q "running"; then
+  echo "Levantando contenedor de postgresql..."
+  docker compose --project-directory "$PROJECT_ROOT" up -d --wait postgres
+fi
 
 cleanup() {
   if [ -n "${FRONTEND_PID:-}" ] && kill -0 "$FRONTEND_PID" 2>/dev/null; then
@@ -38,3 +43,4 @@ FRONTEND_PID=$!
 
 cd "$PROJECT_ROOT"
 ./mvnw --batch-mode quarkus:dev -Dquarkus.profile=dev
+

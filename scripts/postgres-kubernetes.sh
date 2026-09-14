@@ -1,4 +1,5 @@
 #!/usr/bin/env sh
+# Usage: ./postgres-kubernetes.sh {start|restart|stop}
 set -eu
 
 project_root=$(CDPATH= cd -- "$(dirname -- "$0")/.." && pwd)
