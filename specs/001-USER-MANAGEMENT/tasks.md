@@ -51,6 +51,8 @@ La implementacion seguira TDD: primero se crearan los tests y despues el codigo 
 - [x] T021 Crear `scripts/build.sh`.
 - [x] T022 Crear `scripts/run-local.ps1`.
 - [x] T023 Crear `scripts/run-local.sh`.
+- [x] T023a Crear `scripts/start-local.sh` para levantar PostgreSQL y arrancar Quarkus.
+- [x] T023b Crear `scripts/start-local.bat` para levantar PostgreSQL y arrancar Quarkus en Windows.
 - [x] T024 Configurar los scripts para utilizar el Maven Wrapper.
 - [x] T025 Configurar los scripts para devolver error cuando falle un comando.
 - [x] T026 Configurar los scripts para ejecutarse desde la raiz del proyecto.

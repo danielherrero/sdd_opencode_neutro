@@ -11,6 +11,11 @@ La implementacion seguira TDD. Cada prueba identificara el requisito `RF-` evalu
 - [x] T404 Configurar Angular Router y rutas lazy.
 - [x] T405 Instalar y configurar Angular Material y CDK.
 - [x] T406 Configurar entorno de API sin versionar secretos.
+- [x] T406a Crear `environment.ts` para desarrollo local y `environment.prod.ts` para la URL de produccion.
+- [x] T406b Configurar `fileReplacements` de Angular CLI para seleccionar el environment de produccion y documentar el enrutamiento externo de `/api` hacia Quarkus.
+- [x] T406c Crear el `Dockerfile` multistage del frontend con Node.js para compilar y Nginx para servir la SPA.
+- [x] T406d Crear la configuracion de Nginx con fallback de rutas Angular, compresion Gzip y escucha en el puerto `80`.
+- [x] T406e Configurar la imagen final para exponer el puerto `80` y servir la SPA con Nginx.
 
 ## 2. Shell y navegacion
 - [x] T407 Crear shell con sidenav, toolbar y contenido principal.
@@ -53,8 +58,10 @@ La implementacion seguira TDD. Cada prueba identificara el requisito `RF-` evalu
 - [x] T435 Deshabilitar acciones duplicadas durante peticiones.
 - [x] T436 Añadir labels, foco visible, mensajes accesibles y navegacion por teclado.
 - [x] T437 Implementar logging HTTP de desarrollo y tests sin secretos.
+- [ ] T437a Centralizar todas las llamadas al backend en un servicio Angular reutilizable e inyectable desde cualquier componente.
+- [ ] T437b Implementar todas las llamadas REST requeridas por `RF-014` en la SPA y centralizarlas en el servicio Angular reutilizable.
 
-## 7. Tests RF-001 a RF-013
+## 7. Tests RF-001 a RF-014 y RNF-006
 - [x] T438 Test `RF-001` de shell y navegacion principal.
 - [x] T439 Test `RF-002` de navegacion CRUD de usuarios.
 - [x] T440 Test `RF-003` de gestion de usuarios y estados HTTP.
@@ -68,9 +75,15 @@ La implementacion seguira TDD. Cada prueba identificara el requisito `RF-` evalu
 - [x] T448 Test `RF-011` de responsive y accesibilidad.
 - [x] T449 Test `RF-012` de logging HTTP completo sin secretos reales.
 - [x] T449a Test `RF-013` de cumplimiento de las decisiones visuales y responsive definidas con `frontend-design`.
+- [ ] T449b Test `RNF-006` verificando que todas las operaciones REST se exponen mediante el servicio Angular centralizado.
+- [ ] T449c Test `RF-014` verificando las llamadas REST de usuarios, departamentos y relaciones, incluyendo sus respuestas y errores.
+- [x] T449d Test de configuracion verificando que el servicio usa la URL definida por el environment activo.
+- [ ] T449e Verificar la construccion de la imagen Docker multistage y la publicacion de la SPA mediante Nginx.
 
 ## 8. Verificacion
 - [x] T450 Ejecutar todos los tests frontend.
 - [x] T451 Ejecutar build de produccion.
 - [x] T452 Verificar trazabilidad entre `spec.md`, `plan.md` y tests.
 - [x] T453 Actualizar la documentacion si cambia el comportamiento.
+- [x] T454 Actualizar los scripts de arranque local para iniciar Angular junto con Quarkus y limpiar el proceso frontend al finalizar.
+- [x] T455 Configurar el entorno Angular de desarrollo para consumir Quarkus en el puerto local `8081`, separado del servidor Angular en `4200`.

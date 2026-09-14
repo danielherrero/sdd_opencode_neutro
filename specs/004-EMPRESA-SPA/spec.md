@@ -19,6 +19,7 @@ Esta funcionalidad define una aplicacion web SPA para `empresa`, desarrollada co
 - **RF-011: Responsive y Accesibilidad**: Cuando la SPA se visualice en escritorio, tablet o movil, debera adaptar el menu lateral y el contenido manteniendo navegacion por teclado, etiquetas accesibles y contraste suficiente.
 - **RF-012: Trazabilidad HTTP en Desarrollo**: Durante las pruebas frontend, las peticiones HTTP deberan poder inspeccionarse con metodo, URI, cabeceras, payload, status y payload de respuesta sin exponer secretos reales.
 - **RF-013: Aplicacion del Skill de Diseno Frontend**: Cuando se diseñe o implemente la interfaz de la SPA, el equipo debera utilizar el skill `frontend-design` para definir y aplicar una interfaz distintiva, responsive y coherente con los requisitos de accesibilidad.
+- **RF-014: Implementacion de Operaciones del Backend**: Cuando el backend exponga una operacion REST para usuarios, departamentos o relaciones entre usuarios y departamentos, la SPA debera implementar la llamada correspondiente y gestionar sus peticiones, respuestas y errores conforme al contrato REST definido.
 
 ## Requisitos No Funcionales (RNF)
 - **RNF-001: Tecnologia**: La SPA utilizara la ultima version estable de Angular disponible al iniciar la implementacion.
@@ -26,11 +27,18 @@ Esta funcionalidad define una aplicacion web SPA para `empresa`, desarrollada co
 - **RNF-003: Integracion**: La SPA consumira exclusivamente los contratos REST existentes de usuarios, departamentos y relaciones.
 - **RNF-004: Seguridad**: No se almacenaran credenciales ni secretos en el codigo fuente ni en la configuracion versionada.
 - **RNF-005: Mantenibilidad**: Los formularios, tablas, estados de carga y errores compartiran patrones consistentes.
+- **RNF-006: Servicio Centralizado de API**: La SPA debera disponer de un servicio Angular reutilizable que contenga todas las llamadas al backend y pueda ser inyectado y utilizado desde cualquier componente Angular.
+- **RNF-007: Configuracion por Entorno**: La SPA debera utilizar un archivo de entorno para conectarse al backend Quarkus durante el desarrollo local y otro archivo de entorno para configurar la URL del backend cuando se empaquete para produccion dentro de un pod de Nginx.
+- **RNF-008: Imagen Multistage del Frontend**: La SPA debera empaquetarse mediante una imagen Docker multistage que compile la aplicacion con Node.js y sirva los artefactos compilados con Nginx en una imagen final apta para ejecutarse como pod.
 
 ## Criterios de Aceptacion
 - El menu lateral permite navegar a Usuarios, Departamentos y Relaciones.
 - Cada recurso dispone de listado, alta, detalle, modificacion y eliminacion.
 - El formulario de relaciones usa combos de usuarios y departamentos cargados desde API.
 - Los errores REST por campo se muestran junto al control correspondiente.
+- La SPA implementa todas las operaciones REST expuestas por el backend para usuarios, departamentos y relaciones.
+- Todas las llamadas al backend se realizan a traves de un servicio Angular centralizado y reutilizable.
+- El entorno de desarrollo apunta al backend Quarkus local y el entorno de produccion permite configurar la URL del backend publicada por Nginx.
+- La imagen Docker del frontend compila la SPA en una etapa Node.js y sirve los artefactos con Nginx; el enrutamiento de `/api` hacia Quarkus lo proporciona el Ingress, Route o proxy externo.
 - La interfaz funciona en escritorio y movil.
 - Las pruebas frontend cubren navegacion, formularios, combos y llamadas HTTP.

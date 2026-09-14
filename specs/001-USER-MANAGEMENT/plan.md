@@ -132,6 +132,7 @@ Se crearan scripts equivalentes para PowerShell y shell POSIX:
 
 - `scripts/build.ps1` y `scripts/build.sh`: ejecutaran el Maven Wrapper en modo no interactivo, limpiaran y compilaran el proyecto, ejecutando las pruebas.
 - `scripts/run-local.ps1` y `scripts/run-local.sh`: iniciaran Quarkus en modo desarrollo con el perfil `dev`.
+- `scripts/start-local.bat` y `scripts/start-local.sh`: levantaran PostgreSQL mediante Docker Compose, esperaran su estado saludable y arrancaran Quarkus en modo desarrollo con el perfil `dev`.
 - Opcionalmente se anadira un script de empaquetado de imagen cuando se concrete el nombre y registro de la imagen Docker.
 
 Los scripts deben:
