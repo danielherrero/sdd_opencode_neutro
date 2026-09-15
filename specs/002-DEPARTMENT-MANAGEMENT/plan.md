@@ -42,7 +42,7 @@ El recurso base sera `/departments`.
 La respuesta JSON sera un DTO con `id`, `nombre`, `descripcion` y `fechaCreacion`. Los errores `400` reutilizaran el formato comun `{ "error": "...", "errors": { "campo": "motivo" } }`.
 
 ## Validacion y normalizacion
-`CreateDepartmentRequest` exigira `nombre` mediante `@NotBlank`. `UpdateDepartmentRequest` tendra todos sus campos opcionales y validara los que se incluyan. Los constructores compactos aplicaran `trim()` a `nombre` y `descripcion` antes de Bean Validation. No se aplicara la restriccion Unicode de usuarios: se permitiran numeros, espacios internos, signos y caracteres especiales.
+`CreateDepartmentRequest` exigira `nombre` mediante `@NotBlank`. `UpdateDepartmentRequest` tendra todos sus campos opcionales y validara los que se incluyan. Los constructores compactos aplicaran `trim()` a `nombre` y `descripcion`. Para asegurar la integridad de la validacion, Bean Validation se ejecutara sobre los datos normalizados, garantizando que campos como `nombre` no sean solo espacios en blanco.
 
 Si `fechaCreacion` no se recibe en alta, el servicio asignara `LocalDate.now()`. Si se recibe, se conservara la fecha enviada. En una actualizacion parcial sólo se modificaran los campos presentes.
 

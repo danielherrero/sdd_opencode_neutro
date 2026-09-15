@@ -21,7 +21,7 @@ La implementacion seguira TDD. Cada prueba identificara el requisito `RF-` evalu
 - [x] T311 Crear DTO de respuesta.
 - [x] T312 Validar `userId` obligatorio en alta.
 - [x] T313 Validar `departmentId` obligatorio en alta.
-- [x] T314 Validar que los IDs referencien entidades existentes.
+- [ ] T314 Validar que los IDs referencien entidades existentes mediante consulta explícita en el servicio (retornar 400/404).
 - [x] T315 Rechazar fecha de creacion enviada por el cliente.
 
 ## 3. Servicio y API

@@ -55,7 +55,7 @@ El recurso base sera `/user-departments`.
 La respuesta contendra `id`, `userId`, `departmentId` y `fechaCreacion`. Las peticiones de alta y modificacion no aceptaran `fechaCreacion` como campo modificable. Los errores utilizaran el formato comun con `error` y, para validaciones, `errors` por campo.
 
 ## Reglas de negocio
-- En el alta, `userId` y `departmentId` seran obligatorios.
+- En el alta, `userId` y `departmentId` seran obligatorios. El servicio validara explícitamente su existencia en los respectivos repositorios antes de persistir; si no existen, se retornará un error `404 Not Found` o `400 Bad Request` de forma clara para el cliente.
 - Un usuario podra tener cero, una o multiples asociaciones con departamentos. Las pruebas prepararan cinco usuarios y cinco departamentos y verificaran que un mismo usuario puede asociarse a varios departamentos.
 - En la modificacion, ambos campos seran opcionales de forma individual; si se incluyen, deberan referenciar entidades existentes.
 - Una peticion de modificacion no podra cambiar `fechaCreacion`.

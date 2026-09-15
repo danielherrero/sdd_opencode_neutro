@@ -28,8 +28,9 @@ La implementacion seguira TDD y cada prueba identificara el requisito `RF-` eval
 - [x] T217 Implementar `GET /departments`.
 - [x] T218 Implementar `PUT /departments/{id}` parcial.
 - [x] T219 Implementar `DELETE /departments/{id}`.
-- [x] T220 Mapear departamentos inexistentes a `404`.
-- [x] T221 Reutilizar el formato global de errores `400`.
+- [ ] T220 Mapear departamentos inexistentes a `404`.
+- [ ] T221 Reutilizar el formato global de errores `400`.
+- [ ] T222 Manejar excepciones de integridad referencial y traducirlas a `409 Conflict` con mensaje descriptivo.
 
 ## 4. Tests RF-001 a RF-008
 - [x] T222 Test `RF-001` de alta correcta y `201`.
